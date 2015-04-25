@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dexter Logística&TRADE;</title>
+        <!-- Bootstrap -->
+        <link href="inc/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="brand">Dexter Logística&TRADE;</div>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="index.php">Início</a></li>
+                            <li><a href="index.php?module=clientes&action=cadastro">Cadastre-se</a></li>
+                            <li><a href="index.php?module=encomendas&action=simulador">Simulador</a></li>
+                            <?php if(isset($nome)): ?>
+                                <li><a href="index.php?module=encomendas&action=rastrear">Rastreio</a></li>
+                            <?php endif; ?>
+                            <li><a href="index.php?module=clientes&action=sobre">Sobre</a></li>
+                        </ul>
+                        <?php if(isset($nome)): ?>
+                            <div class="span5 white" style="float: right; padding: 10px 0; font-size: 16px; text-align: right;">
+                                Olá, <strong><?php echo $nome; ?>!</strong>
+                                <a href="index.php?module=clientes&action=deslogar">Sair</a>
+                            </div>
+                        <?php else: ?>
+                            <form class="navbar-form pull-right" action="index.php?module=clientes&action=logar" method="POST">
+                                <input class="span2" type="text" name="email" placeholder="E-mail" />
+                                <input class="span2" type="password" name="senha" placeholder="Senha" />
+                                <button type="submit" class="btn">Logar</button>
+                            </form>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <?php if (Message::exists()) echo Message::out(); ?>
+            </div>

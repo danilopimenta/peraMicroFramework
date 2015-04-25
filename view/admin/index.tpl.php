@@ -1,0 +1,1 @@
+<?php include('encomendas/listar.tpl.php'); ?>
